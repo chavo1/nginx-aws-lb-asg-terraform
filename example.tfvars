@@ -10,7 +10,7 @@ nginx_ami    = "<Your preinstalled Nginx Ami>"
 aws_region   = "us-east-1"
 key_name     = "<your aws public key>"
 machine_type = "t2.micro"
-server_count = 1
+key_name     = "chavo"
 
 
 

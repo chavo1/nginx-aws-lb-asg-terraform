@@ -1,17 +1,11 @@
-resource "aws_eip" "nginx-eip" {
-  vpc = true
-  tags = {
-    Name = "nginx-eip"
-  }
-}
-
 # Create AWS NLB
 resource "aws_lb" "main" {
-  name               = "aws-nlb-lb"
-  load_balancer_type = "network"
-  subnets = [
-    aws_subnet.public.id,
-  ]
+  name                             = "aws-nlb-lb"
+  load_balancer_type               = "network"
+  internal                         = false
+  subnets                          = [aws_subnet.public.id]
+  enable_cross_zone_load_balancing = true
+  enable_deletion_protection       = false
   tags = {
     Environment = "nginx_lb"
   }
